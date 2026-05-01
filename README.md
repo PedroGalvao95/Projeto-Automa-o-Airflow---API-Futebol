@@ -42,9 +42,9 @@ Acesse a interface em localhost:8080 (usuário: airflow | senha: airflow).
 
 ### Estrutura de Automação
 As DAGs foram desenhadas para serem interdependentes via Airflow Datasets, disparando automaticamente conforme o dado é atualizado:
-*   [dag_futebol_bronze.py](dags/dag_futebol_bronze.py): Coleta dados de 20 times, com tratamento de rate limit.
-*   [dag_futebol_silver.py](dags/dag_futebol_silver.py): Processa a limpeza assim que a Bronze é finalizada.
-*   [dag_futebol_gold.py](dags/dag_futebol_gold.py): Atualiza os rankings de elite e eficiência dos elencos.
+*   [futebol_bronze_extraction](dags/dag_futebol_bronze.py): Coleta dados de 20 times, com tratamento de rate limit.
+*   [futebol_silver_transformation](dags/dag_futebol_silver.py): Processa a limpeza assim que a Bronze é finalizada.
+*   [futebol_gold_analytics](dags/dag_futebol_gold.py): Atualiza os rankings de elite e eficiência dos elencos.
 
 ### DAG Grid
 <img width="1903" height="861" alt="image" src="https://github.com/user-attachments/assets/4a10cacb-fab9-4feb-b6a3-90812ab937c6" />
