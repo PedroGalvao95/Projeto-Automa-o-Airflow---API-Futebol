@@ -59,7 +59,10 @@ As DAGs foram desenhadas para serem interdependentes via Airflow Datasets, dispa
 ### Grafo DAG Gold
 <img width="1899" height="866" alt="image" src="https://github.com/user-attachments/assets/85742496-2e83-4b70-aeee-cff25a9f1ae6" />
 
+### DBeaver com dados da camada Silver
+<img width="1424" height="802" alt="WhatsApp Image 2026-04-30 at 22 15 48" src="https://github.com/user-attachments/assets/c6f273e2-f081-40da-861b-6ba4801cac7b" />
+
 ### Atualização futura
-*  Inclusão de análise no PowerBI
+*  Inclusão de análise no PowerBI por conexão às tabelas Silver e Gold diretamente do banco de dados
 
 ### Desenvolvido por Pedro Galvão
