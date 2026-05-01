@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Variáveis de Ambiente e Credenciais
+.env
+logs/
+airflow.db
+plugins/
+
+# Dados locais (caso salve CSVs ou JSONs temporários)
+data/
