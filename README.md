@@ -4,47 +4,47 @@ Este projeto implementa um pipeline de dados ponta a ponta que automatiza a extr
 
 ##  Arquitetura do Projeto
 
-O workflow é orquestrado pelo **Apache Airflow**, garantindo a integridade dos dados através de três camadas[cite: 3, 4, 6, 9]:
+O workflow é orquestrado pelo **Apache Airflow**, garantindo a integridade dos dados através de três camadas:
 
-1.  **Bronze (Raw Data):** Extração via `API-Football` e armazenamento do JSON bruto em PostgreSQL (`bronze_players`)[cite: 4].
-2.  **Silver (Structured Data):** Limpeza, tipagem e normalização dos dados brutos para um formato tabular estruturado (`silver_players`)[cite: 6].
-3.  **Gold (Analytics Data):** Geração de tabelas de consumo com métricas avançadas, como o **Power Score** (ranking de força) e eficiência de chutes[cite: 9].
+1.  **[Bronze (Raw Data)](dags/dag_futebol_bronze.py):** Extração via `API-Football` e armazenamento do JSON bruto em PostgreSQL (`bronze_players`).
+2.  **[Silver (Structured Data)](dags/dag_futebol_silver.py):** Limpeza, tipagem e normalização dos dados brutos para um formato tabular estruturado (`silver_players`).
+3.  **[Gold (Analytics Data)](dags/dag_futebol_gold.py):** Geração de tabelas de consumo com métricas avançadas, como o **Power Score** (ranking de força) e eficiência de chutes.
 
 ## 🛠️ Tecnologias Utilizadas
 
-*   **Orquestração:** [Apache Airflow](https://airflow.apache.org/)[cite: 3].
-*   **Banco de Dados:** [PostgreSQL](https://www.postgresql.org/)[cite: 3, 5].
-*   **Conteneirização:** [Docker](https://www.docker.com/) & Docker Compose[cite: 3].
-*   **Linguagem:** Python (Requests / SQL)[cite: 4, 6].
-*   **Fonte de Dados:** [API-Football (v3)](https://www.api-football.com/)[cite: 4].
+*   **Orquestração:** [Apache Airflow](https://airflow.apache.org/).
+*   **Banco de Dados:** [PostgreSQL](https://www.postgresql.org/).
+*   **Conteneirização:** [Docker](https://www.docker.com/) & Docker Compose.
+*   **Linguagem:** Python (Requests / SQL).
+*   **Fonte de Dados:** [API-Football (v3)](https://www.api-football.com/).
 
 ## 🚀 Como Executar
 
-O projeto está configurado para rodar em containers, isolando todas as dependências[cite: 3].
+O projeto está configurado para rodar em containers, isolando todas as dependências.
 
 ### 1. Pré-requisitos
-*   Docker e Docker Compose instalados[cite: 3].
-*   Chave de acesso da API-Football[cite: 4].
+*   Docker e Docker Compose instalados.
+*   Chave de acesso da API-Football.
 
 ### 2. Configuração de Ambiente
-Crie um arquivo `.env` na raiz do projeto com o UID do Airflow (conforme definido no projeto)[cite: 1]:
+Crie um arquivo `.env` na raiz do projeto com o UID do Airflow (conforme definido no projeto):
 ```bash
 AIRFLOW_UID=50000
 ```
-No painel do Airflow (Admin -> Variables), cadastre a chave api_football_key com seu token da API[cite: 4].
+No painel do Airflow (Admin -> Variables), cadastre a chave api_football_key com seu token da API.
 
 ### 3. Inicialização
 ```bash
 # Subir os serviços (Airflow, Postgres, Redis)
 docker-compose up -d
 ```
-Acesse a interface em localhost:8080 (usuário: airflow | senha: airflow)[cite: 3].
+Acesse a interface em localhost:8080 (usuário: airflow | senha: airflow).
 
 ### Estrutura de Automação
 As DAGs foram desenhadas para serem interdependentes via Airflow Datasets, disparando automaticamente conforme o dado é atualizado[cite: 4, 6, 9]:
-*   futebol_bronze_extraction: Coleta dados de 20 times, com tratamento de rate limit[cite: 4].
-*   futebol_silver_transformation: Processa a limpeza assim que a Bronze é finalizada[cite: 6].
-*   futebol_gold_analytics: Atualiza os rankings de elite e eficiência dos elencos[cite: 9].
+*   futebol_bronze_extraction: Coleta dados de 20 times, com tratamento de rate limit.
+*   futebol_silver_transformation: Processa a limpeza assim que a Bronze é finalizada.
+*   futebol_gold_analytics: Atualiza os rankings de elite e eficiência dos elencos.
 
 ### DAG Grid
 <img width="1903" height="861" alt="image" src="https://github.com/user-attachments/assets/4a10cacb-fab9-4feb-b6a3-90812ab937c6" />
