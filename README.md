@@ -15,7 +15,7 @@ O workflow é orquestrado pelo **Apache Airflow**, garantindo a integridade dos 
 *   **Orquestração:** [Apache Airflow](https://airflow.apache.org/).
 *   **Banco de Dados:** [PostgreSQL](https://www.postgresql.org/).
 *   **Conteneirização:** [Docker](https://www.docker.com/) & Docker Compose.
-*   **Linguagem:** Python (Requests / SQL).
+*   **Linguagem:** [Python](https://www.python.org/) (Requests / SQL).
 *   **Fonte de Dados:** [API-Football (v3)](https://www.api-football.com/).
 
 ## 🚀 Como Executar
