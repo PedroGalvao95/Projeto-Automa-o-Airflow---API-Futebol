@@ -1,6 +1,6 @@
 # ⚽ Pipeline de Dados: Premier League Stats (Medallion Architecture)
 
-Este projeto implementa um pipeline de dados ponta a ponta que automatiza a extração, o processamento e a análise de estatísticas de jogadores da **Premier League (Temporada 2024)**. A solução utiliza a **Arquitetura Medalhão** para organizar o fluxo de dados desde o estado bruto até a geração de rankings de performance[cite: 4, 6, 9].
+Este projeto implementa um pipeline de dados ponta a ponta que automatiza a extração, o processamento e a análise de estatísticas de jogadores da **Premier League (Temporada 2024)**. A solução utiliza a **Arquitetura Medalhão** para organizar o fluxo de dados desde o estado bruto até a geração de rankings de performance.
 
 ##  Arquitetura do Projeto
 
@@ -16,7 +16,7 @@ O workflow é orquestrado pelo **Apache Airflow**, garantindo a integridade dos 
 *   **Banco de Dados:** [PostgreSQL](https://www.postgresql.org/).
 *   **Conteneirização:** [Docker](https://www.docker.com/) & Docker Compose.
 *   **Linguagem:** [Python](https://www.python.org/) (Requests / SQL).
-*   **Fonte de Dados:** [API-Football (v3)](https://www.api-football.com/).
+*   **Fonte de Dados:** [API-Football](https://dashboard.api-football.com/).
 
 ## 🚀 Como Executar
 
@@ -41,10 +41,10 @@ docker-compose up -d
 Acesse a interface em localhost:8080 (usuário: airflow | senha: airflow).
 
 ### Estrutura de Automação
-As DAGs foram desenhadas para serem interdependentes via Airflow Datasets, disparando automaticamente conforme o dado é atualizado[cite: 4, 6, 9]:
-*   futebol_bronze_extraction: Coleta dados de 20 times, com tratamento de rate limit.
-*   futebol_silver_transformation: Processa a limpeza assim que a Bronze é finalizada.
-*   futebol_gold_analytics: Atualiza os rankings de elite e eficiência dos elencos.
+As DAGs foram desenhadas para serem interdependentes via Airflow Datasets, disparando automaticamente conforme o dado é atualizado:
+*   [dag_futebol_bronze.py](dags/dag_futebol_bronze.py): Coleta dados de 20 times, com tratamento de rate limit.
+*   [dag_futebol_silver.py](dags/dag_futebol_silver.py): Processa a limpeza assim que a Bronze é finalizada.
+*   [dag_futebol_gold.py](dags/dag_futebol_gold.py): Atualiza os rankings de elite e eficiência dos elencos.
 
 ### DAG Grid
 <img width="1903" height="861" alt="image" src="https://github.com/user-attachments/assets/4a10cacb-fab9-4feb-b6a3-90812ab937c6" />
